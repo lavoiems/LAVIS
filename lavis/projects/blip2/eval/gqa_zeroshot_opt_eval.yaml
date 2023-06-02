@@ -3,10 +3,10 @@
  # SPDX-License-Identifier: BSD-3-Clause
  # For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
 
-# Overall Accuracy is: 43.98
+# Overall Accuracy is: 36.4
 model:
-  arch: blip2_t5
-  model_type: pretrain_flant5xl
+  arch: blip2_opt
+  model_type: pretrain_opt2.7b
   use_grad_checkpoint: False
 
 datasets:
@@ -21,13 +21,13 @@ datasets:
           name: "blip_question"
     build_info:
         images:
-            storage: "~/.cache/lavis/gqa/images/"
+            storage: "/private/home/lavoie/.cache/lavis/gqa/images/"
 
 run:
   task: gqa
   # optimization-specific
-  batch_size_train: 16
-  batch_size_eval: 64
+  batch_size_train: 8
+  batch_size_eval: 32
   num_workers: 4
 
   # inference-specific
